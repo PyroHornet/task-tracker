@@ -3,7 +3,7 @@
 A clean, responsive task management app for tracking daily to-dos.
 
 ## Live Demo
-(coming soon - will deploy on Vercel)
+https://task-tracker-eight-green.vercel.app/
 
 ## Features
 - Add new tasks
