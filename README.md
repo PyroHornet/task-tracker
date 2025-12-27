@@ -19,7 +19,7 @@ A clean, responsive task management app for tracking daily to-dos.
 
 ## Local Setup
 ```bash
-git clone https://github.com/YOUR-USERNAME/task-tracker.git
+git clone https://github.com/PyroHornet/task-tracker.git
 cd task-tracker
 npm install
 npm start
