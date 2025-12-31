@@ -1,16 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getTasks, addTask } from './api';
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
-  const addTask = (e) => {
-    e?.preventDefault(); // prevents form reload if we add a form later
-    if (newTask.trim()) {
-      setTasks([...tasks, { id: Date.now(), text: newTask.trim(), completed: false }]);
-      setNewTask('');
-    }
-  };
+  useEffect(() => {
+  getTasks()
+    .then(setTasks)
+    .catch(err => console.error('Load failed:', err));
+}, []);
+
+  const handleAdd = async (e) => {
+  e?.preventDefault();
+  const title = newTask.trim();
+  if (!title) return;
+
+  try {
+    const newTaskFromServer = await addTask(title);
+    setTasks(prev => [...prev, {
+      id: newTaskFromServer.id,
+      title: newTaskFromServer.title,
+      completed: newTaskFromServer.completed
+    }]);
+    setNewTask('');
+  } catch (err) {
+    console.error('Add failed:', err);
+    alert('Failed to add task — is backend running?');
+  }
+};
 
   return (
     <div style={{
@@ -21,7 +40,7 @@ function App() {
     }}>
       <h1>Task Tracker</h1>
 
-      <form onSubmit={addTask} style={{ marginBottom: '30px' }}>
+      <form onSubmit={handleAdd} style={{ marginBottom: '30px' }}>
         <input
           type="text"
           value={newTask}
@@ -32,7 +51,7 @@ function App() {
             width: '70%',
             fontSize: '16px'
           }}
-          onKeyDown={(e) => e.key === 'Enter' && addTask()}
+          //onKeyDown={(e) => e.key === 'Enter' && handleAdd(e)} // add (e) so preventDefault works
         />
         <button
           type="submit"
@@ -56,7 +75,7 @@ function App() {
               fontSize: '18px'
             }}
           >
-            {task.text}
+            {task.title}
           </li>
         ))}
       </ul>
