@@ -1,6 +1,6 @@
 
 # Task Tracker
-A clean, responsive task management app for tracking daily to-dos.
+A clean, responsive full-stack task management app for tracking daily to-dos.
 
 ## Live Demo
 https://task-tracker-eight-green.vercel.app/
@@ -13,16 +13,21 @@ https://task-tracker-eight-green.vercel.app/
 - Mobile-friendly design
 
 ## Tech Stack
-- Frontend: React (JavaScript / planning to add TypeScript)
-- Backend (planned): Node.js + Express
-- Database (planned): PostgreSQL or MongoDB
+- **Frontend**: React + Vite + Tailwind (responsive UI)
+- **Backend**: Node.js + Express REST API
+- **Features**: Create/read tasks, in-memory storage (SQLite coming next)
+- **Live Demo**: [coming soon after deploy]
+- **Status**: In progress - adding persistence and deployment
 
 ## Local Setup
 ```bash
-git clone https://github.com/PyroHornet/task-tracker.git
+git clone https://github.com/SamaelGamboa/task-tracker.git
 cd task-tracker
 npm install
-npm dev run
+#Frontend
+npm run dev
+#Backend
+npm run server
 ```
 
 ## Progress & Learning
