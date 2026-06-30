@@ -25,3 +25,7 @@ dist-ssr
 
 # Environment variables
 .env
+# Grok agent rules (not committed)
+AGENTS.md
+CLAUDE.md
+AGENT.md
